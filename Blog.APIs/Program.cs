@@ -20,6 +20,8 @@ option.UseSqlServer(builder.Configuration.GetConnectionString("BlogDB")));
 
 //DI
 builder.Services.AddScoped<ICategoryService,CategoryService>();
+builder.Services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));)
+
 
 var app = builder.Build();
 

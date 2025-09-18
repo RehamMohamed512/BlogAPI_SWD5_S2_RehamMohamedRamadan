@@ -12,15 +12,15 @@ namespace Blog.Core.Interfaces
         //get all
         Task<IEnumerable<TableModel>> GetAllAsync();
         ////get by id
-        //Task<IEnumerable<TableModel>> GetByIdAsync(int id);
+        Task<IEnumerable<TableModel>> GetByIdAsync(int id);
         ////create
-        //Task CreateAsync(TableModel model);
+        Task CreateAsync(TableModel model);
 
         ////update
-        //void Update(TableModel model);
+        void Update(TableModel model);
         ////delete
-        //void Delete(TableModel model);
+        void Delete(TableModel model);
         ////save
-        //Task SaveAsync();
+        Task SaveAsync();
     }
 }

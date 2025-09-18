@@ -22,9 +22,40 @@ namespace Blog.Infrastructure.Services
             //used to query to save instance of tableModel
             _dbSet = context.Set<TableModel>(); //Posts
         }
-        Task<IEnumerable<TableModel>> IGenaricRepository<TableModel>.GetAllAsync()
+
+
+        public async Task<IEnumerable<TableModel>> GetAllAsync()
+        {
+            return await _dbSet.ToListAsync();
+        }
+
+        public async Task<TableModel> GetByIdAsync(int id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+        public async Task CreateAsync(TableModel model)
+        {
+            await _dbSet.AddAsync(model);
+        }
+
+         async Task IGenaricRepository<TableModel>.SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        Task<IEnumerable<TableModel>> IGenaricRepository<TableModel>.GetByIdAsync(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public void Update(TableModel model)
+        {
+            _dbSet.Update(model);
+        }
+
+        public void Delete(TableModel model)
+        {
+            _dbSet.Remove(model);
         }
     }
 }
